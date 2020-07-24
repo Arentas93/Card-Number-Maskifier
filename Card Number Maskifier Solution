@@ -1,0 +1,38 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace maskify
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string lastFour = Maskify("4563598747631458");     // Lets say this is the number of Credit Card and we need to mask it so only the final 4 digits are visible
+            Console.WriteLine(lastFour);
+            Console.ReadLine();
+        }
+        public static string Maskify(string cc)
+        {
+            string  ans = null;
+            if (cc.Length >=4)
+            {
+                for (int i = 0; i < cc.Length - 4; i++)
+                {
+                    ans += "#";
+                }
+
+                ans += new string(cc.ToCharArray(cc.Length - 4, 4));
+            }
+            else
+            {
+                ans = cc;
+            }
+            
+            return ans;
+        }
+    }
+
+}
